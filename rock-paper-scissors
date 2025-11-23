@@ -1,0 +1,57 @@
+# create rock paper scissors game uisng python random module
+import random
+
+print(" Welcome to Rock-Paper-Scissors Game with Scores!")
+
+choices = ['rock', 'paper', 'scissors']
+
+user_points = 0
+computer_points = 0
+
+while True:
+    # User input
+    user = input("\nEnter your choice (rock / paper / scissors): ").lower()
+
+    if user not in choices:
+        print(" Invalid choice! Please type rock, paper, or scissors.")
+        continue
+
+    # Computer choice
+    computer = random.choice(choices)
+    print("Computer chose:", computer)
+
+    # Game Logic
+    if user == computer:
+        print(" It's a tie!")
+
+    elif (user == 'rock' and computer == 'scissors') or \
+         (user == 'paper' and computer == 'rock') or \
+         (user == 'scissors' and computer == 'paper'):
+        print(" You win this round!")
+        user_points += 1             
+
+    else:
+        print(" Computer wins this round!")
+        computer_points += 1           
+
+    # Show updated scores
+    print(f" Score → You: {user_points} | Computer: {computer_points}")
+
+    # Ask to play again
+    play_again = input("\nDo you want to play again? (yes/no): ").lower()
+    if play_again != 'yes':
+        print("\n Final Scoreboard:")
+        print(f" You: {user_points}")
+        print(f" Computer: {computer_points}")
+
+        if user_points > computer_points:
+            print(" You are the overall WINNER!")
+        elif user_points < computer_points:
+            print(" Computer is the overall WINNER!")
+        else:
+            print(" It's an overall TIE!")
+
+        print("\nThank you for playing!")
+        break
+
+
